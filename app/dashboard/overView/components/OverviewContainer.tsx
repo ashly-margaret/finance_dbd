@@ -39,7 +39,7 @@ export default function OverviewContainer() {
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 {/* Placeholder Stats Cards */}
                 {["Total Calls", "Revenue", "Active APIs", "Errors"].map((item) => (
-                    <div key={item} className="p-6 rounded-xl border bg-card text-card-foreground shadow-sm">
+                    <div key={item} className="p-6 rounded-xl bg-card text-card-foreground shadow-sm">
                         <h3 className="text-sm font-medium tracking-tight text-muted-foreground">
                             {item}
                         </h3>
@@ -50,11 +50,11 @@ export default function OverviewContainer() {
 
             {/* Charts Section */}
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-                <div className="col-span-4 p-6 rounded-xl border bg-card shadow-sm h-[400px]">
+                <div className="col-span-4 p-6 rounded-xl  bg-card shadow-sm h-[400px]">
                     <h3 className="font-semibold leading-none tracking-tight">Monthly Usage Trend</h3>
                   <UsageTrendChart/>
                 </div>
-                <div className="col-span-3 p-6 rounded-xl border bg-card  shadow-sm h-[400px]">
+                <div className="col-span-3 p-6 rounded-xl  bg-card  shadow-sm h-[400px]">
                     <h3 className="font-semibold leading-none tracking-tight">Paid Calls by Type</h3>
                     {/* Chart Placeholder */}
                 </div>
