@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Finance Dashboard (Next.js + shadcn)
 
-## Getting Started
+A modern Finance & API Usage Dashboard built using Next.js (App Router) and shadcn UI, showcasing real-world enterprise dashboard features including charts, widgets, tables, filters, loaders, and mock API integrations.
 
-First, run the development server:
+🚀 Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Next.js (App Router, TypeScript)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+shadcn UI
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Tailwind CSS
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Recharts (Charts)
 
-## Learn More
+Mock APIs (Next.js Route Handlers)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🎯 Key Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+KPI widgets (cards)
 
-## Deploy on Vercel
+Trend charts (Line, Bar, Pie)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Transaction summary tables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Filters with loader states
+
+Tab-based navigation
+
+Unique vs Non-Unique views
+
+Mock API integration with artificial delays
+
+Skeleton & spinner loaders
+
+Light/Dark mode support
+
+
+📊 Dashboard Pages
+1. Overview
+
+KPI cards (Total Calls, Revenue, APIs)
+
+Monthly usage trend (Line chart)
+
+Paid Calls by Type (Bar chart)
+
+Unique vs Non-Unique (Pie chart)
+
+2. Transactions
+
+Filter bar (Client, Channel, Date)
+
+Tab-wise channel view
+
+Transaction summary table
+
+Unique transaction toggle
+
+Loader inside dropdowns
+
+3. APIs
+
+API usage cards
+
+Stacked bar (Paid vs Free)
+
+Error rate indicators
+
+4. Billing
+
+Invoice table
+
+Status badges (Paid / Pending / Rejected)
+
+Revenue trend chart
+
+Invoice preview modal
+
+5. Settings
+
+Theme toggle
+
+Notification toggle
+
+User profile section
+
+
+🧪 Mock APIs
+Endpoint	Description
+/api/overview	KPI metrics
+/api/charts	Chart data
+/api/transactions	Transaction table
+/api/apis	API usage
+/api/billing	Invoice data
+
+Each API simulates:
+
+Network delay
+
+Loading state
+
+Empty state
+
+Error handling
+
+
+🧠 Learning Goals
+
+Build production-style dashboards
+
+Practice state management
+
+Integrate charts with UI components
+
+Design scalable UI architecture
+
+Handle slow APIs gracefully
+
+
+🌱 Future Enhancements
+
+CSV export
+
+Saved filters
+
+Role-based access
+
+Real-time updates
+
+Drill-down charts
