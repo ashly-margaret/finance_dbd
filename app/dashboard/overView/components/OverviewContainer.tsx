@@ -50,7 +50,7 @@ export default function OverviewContainer() {
 
             {/* Charts Section */}
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-                <div className="col-span-4 p-6 rounded-xl border bg-card    shadow-sm h-[400px]">
+                <div className="col-span-4 p-6 rounded-xl border bg-card shadow-sm h-[400px]">
                     <h3 className="font-semibold leading-none tracking-tight">Monthly Usage Trend</h3>
                   <UsageTrendChart/>
                 </div>

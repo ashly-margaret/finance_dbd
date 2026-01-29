@@ -47,8 +47,7 @@
     /* Base Light Mode (Optional, generated complementary) */
     --background: 222 29% 13%; /* #181E2C */
     --foreground: 0 0% 100%;
-
-    --card: 220 24% 20%;
+    --card: 218 23% 21%; /* #293242 */
     --card-foreground: 224 40% 10%;
     --popover: 0 0% 100%;
     --popover-foreground: 224 40% 10%;
