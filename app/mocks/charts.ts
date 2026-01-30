@@ -27,3 +27,8 @@ export const trafficBreakdownMock = [
   { month: "Nov", free: 82000, paid: 58000, premium: 30000 },
   { month: "Dec", free: 85000, paid: 60000, premium: 32000 },
 ]
+
+export const uniqueVsNonUniqueMock = [
+  { type: "Unique Calls", count: 180000 },
+  { type: "Non-Unique Calls", count: 60000 },
+]

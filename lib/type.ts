@@ -21,3 +21,8 @@ export type TrafficBreakdown = {
   paid: number
   premium: number
 }
+
+export type UniqueVsNonUnique = {
+  type: string   // e.g., "Unique Calls", "Non-Unique Calls"
+  count: number
+}

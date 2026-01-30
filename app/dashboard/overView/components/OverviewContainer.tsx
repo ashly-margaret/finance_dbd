@@ -4,9 +4,10 @@ import PageHeader from "@/components/PageHeader";
 import React, { useState, useEffect } from "react";
 import { UsageTrendChart } from "./UsageTrendChart";
 import { getOverviewData } from "@/lib/services/overview";
-import { MonthlyUsage, OverviewData, TrafficBreakdown } from "@/lib/type";
-import { getMonthlyUsageData, getTrafficBreakdownData } from "@/lib/services/chart";
+import { MonthlyUsage, OverviewData, TrafficBreakdown, UniqueVsNonUnique } from "@/lib/type";
+import { getMonthlyUsageData, getTrafficBreakdownData, getUniqueVsNonUniqueData } from "@/lib/services/chart";
 import { TrafficBreakDownChart } from "./TrafficBreakDownChart";
+import { UniqueVsNonUniqueChart } from "./UniqueVsNonUniqueChart";
 
 /**
  * OverviewContainer
@@ -19,6 +20,7 @@ export default function OverviewContainer() {
     const [overviewData, setOverviewData] = useState<OverviewData | null>(null);
     const [monthlyUsageData, setMonthlyUsageData] = useState<MonthlyUsage[] | null>(null);
     const [trafficBreakdownData, setTrafficBreakdownData] = useState<TrafficBreakdown[] | null>(null);
+    const [uniqueVsNonUniqueData, setUniqueVsNonUniqueData] = useState<UniqueVsNonUnique[] | null>(null);
 
     // useEffect(() => {
     //     // Simulate data fetching
@@ -50,10 +52,16 @@ export default function OverviewContainer() {
         setTrafficBreakdownData(res)
     }
 
+    const fetchUniqueVsNonUniqueData = async () => {
+        const res = await getUniqueVsNonUniqueData()
+        setUniqueVsNonUniqueData(res)
+    }
+
     useEffect(() => {
         fetchOverviewData()
         fetchMonthlyUsageData()
         fetchTrafficBreakdownData()
+        fetchUniqueVsNonUniqueData()
     }, []);
 
     return (
@@ -81,8 +89,7 @@ export default function OverviewContainer() {
                 </div>
                 <div className="col-span-3 p-6 rounded-xl  bg-card  shadow-sm h-[400px]">
                     <h3 className="font-semibold leading-none tracking-tight text-foreground">Paid Calls by Type</h3>
-                    {/* Chart Placeholder */}
-                </div>
+                    <UniqueVsNonUniqueChart data={uniqueVsNonUniqueData} />                </div>
                 <div className="col-span-3 p-6 rounded-xl  bg-card  shadow-sm h-[400px]">
                     <h3 className="font-semibold leading-none tracking-tight text-foreground">Traffic Breakdown</h3>
                     <TrafficBreakDownChart data={trafficBreakdownData} />

@@ -15,3 +15,11 @@ export async function getTrafficBreakdownData() {
     }
     return res.json()
 }
+
+export async function getUniqueVsNonUniqueData() {
+    const res = await fetch(ENDPOINTS.UNIQUE_VS_NON_UNIQUE)
+    if (!res.ok) {
+        throw new Error("Failed to fetch unique vs non-unique data")
+    }
+    return res.json()
+}
