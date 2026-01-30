@@ -1,15 +1,10 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
 import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
 
 import {
     Card,
     CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
 } from "@/components/ui/card"
 import {
     ChartContainer,
@@ -30,8 +25,7 @@ const chartConfig = {
 
 export function TrafficBreakDownChart({ data }: { data: TrafficBreakdown[] | null }) {
     return (
-        <Card>
-          
+        <Card className="border-none shadow-none bg-transparent">
             <CardContent>
                 <ChartContainer config={chartConfig} className="h-[300px] w-full">
                     <LineChart
@@ -58,14 +52,13 @@ export function TrafficBreakDownChart({ data }: { data: TrafficBreakdown[] | nul
                         <Line
                             dataKey="free"
                             type="natural"
-                           stroke="#68BAFF"
+                            stroke="#68BAFF"
                             strokeWidth={2}
                             dot={false}
                         />
                     </LineChart>
                 </ChartContainer>
             </CardContent>
-           
         </Card>
     )
 }
