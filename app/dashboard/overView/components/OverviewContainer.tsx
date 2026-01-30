@@ -4,8 +4,9 @@ import PageHeader from "@/components/PageHeader";
 import React, { useState, useEffect } from "react";
 import { UsageTrendChart } from "./UsageTrendChart";
 import { getOverviewData } from "@/lib/services/overview";
-import { OverviewData } from "@/lib/type";
-import { getMonthlyUsageData } from "@/lib/services/chart";
+import { MonthlyUsage, OverviewData, TrafficBreakdown } from "@/lib/type";
+import { getMonthlyUsageData, getTrafficBreakdownData } from "@/lib/services/chart";
+import { TrafficBreakDownChart } from "./TrafficBreakDownChart";
 
 /**
  * OverviewContainer
@@ -16,7 +17,8 @@ import { getMonthlyUsageData } from "@/lib/services/chart";
 export default function OverviewContainer() {
     const [isLoading, setIsLoading] = useState(true);
     const [overviewData, setOverviewData] = useState<OverviewData | null>(null);
-    const [monthlyUsageData, setMonthlyUsageData] = useState<any | null>(null);
+    const [monthlyUsageData, setMonthlyUsageData] = useState<MonthlyUsage[] | null>(null);
+    const [trafficBreakdownData, setTrafficBreakdownData] = useState<TrafficBreakdown[] | null>(null);
 
     // useEffect(() => {
     //     // Simulate data fetching
@@ -33,24 +35,30 @@ export default function OverviewContainer() {
     //         </div>
     //     );
     // }
-const fetchOverviewData = async () => {
-  const res = await getOverviewData()
-  setOverviewData(res)
-}
+    const fetchOverviewData = async () => {
+        const res = await getOverviewData()
+        setOverviewData(res)
+    }
 
-const fetchMonthlyUsageData = async () => {
-  const res = await getMonthlyUsageData()
-  setMonthlyUsageData(res)
-}
+    const fetchMonthlyUsageData = async () => {
+        const res = await getMonthlyUsageData()
+        setMonthlyUsageData(res)
+    }
+
+    const fetchTrafficBreakdownData = async () => {
+        const res = await getTrafficBreakdownData()
+        setTrafficBreakdownData(res)
+    }
 
     useEffect(() => {
         fetchOverviewData()
         fetchMonthlyUsageData()
+        fetchTrafficBreakdownData()
     }, []);
 
     return (
-        <div className="space-y-6">          
-            <PageHeader title="Overview"/>
+        <div className="space-y-6">
+            <PageHeader title="Overview" />
 
             {/* Main Grid Layout */}
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -69,7 +77,15 @@ const fetchMonthlyUsageData = async () => {
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
                 <div className="col-span-4 p-6 rounded-xl  bg-card shadow-sm h-[400px]">
                     <h3 className="font-semibold leading-none tracking-tight text-foreground">Monthly Usage Trend</h3>
-                  <UsageTrendChart data={monthlyUsageData}/>
+                    <UsageTrendChart data={monthlyUsageData} />
+                </div>
+                <div className="col-span-3 p-6 rounded-xl  bg-card  shadow-sm h-[400px]">
+                    <h3 className="font-semibold leading-none tracking-tight text-foreground">Paid Calls by Type</h3>
+                    {/* Chart Placeholder */}
+                </div>
+                <div className="col-span-3 p-6 rounded-xl  bg-card  shadow-sm h-[400px]">
+                    <h3 className="font-semibold leading-none tracking-tight text-foreground">Traffic Breakdown</h3>
+                    <TrafficBreakDownChart data={trafficBreakdownData} />
                 </div>
                 <div className="col-span-3 p-6 rounded-xl  bg-card  shadow-sm h-[400px]">
                     <h3 className="font-semibold leading-none tracking-tight text-foreground">Paid Calls by Type</h3>

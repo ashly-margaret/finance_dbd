@@ -12,3 +12,18 @@ export const monthlyUsageMock = [
   { month: "Nov", totalCalls: 250000, revenue: 6200 },
   { month: "Dec", totalCalls: 240000, revenue: 6100 },
 ]
+
+export const trafficBreakdownMock = [
+  { month: "Jan", free: 50000, paid: 30000, premium: 10000 },
+  { month: "Feb", free: 60000, paid: 35000, premium: 12000 },
+  { month: "Mar", free: 55000, paid: 40000, premium: 15000 },
+  { month: "Apr", free: 70000, paid: 45000, premium: 18000 },
+  { month: "May", free: 65000, paid: 47000, premium: 20000 },
+  { month: "Jun", free: 72000, paid: 50000, premium: 22000 },
+  { month: "Jul", free: 75000, paid: 52000, premium: 23000 },
+  { month: "Aug", free: 70000, paid: 50000, premium: 21000 },
+  { month: "Sep", free: 76000, paid: 54000, premium: 25000 },
+  { month: "Oct", free: 80000, paid: 55000, premium: 27000 },
+  { month: "Nov", free: 82000, paid: 58000, premium: 30000 },
+  { month: "Dec", free: 85000, paid: 60000, premium: 32000 },
+]

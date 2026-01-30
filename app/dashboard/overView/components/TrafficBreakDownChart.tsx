@@ -1,8 +1,7 @@
 "use client"
-import { MonthlyUsage } from "@/lib/type"
 
 import { TrendingUp } from "lucide-react"
-import { CartesianGrid, LabelList, Line, LineChart, XAxis } from "recharts"
+import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
 
 import {
     Card,
@@ -18,35 +17,27 @@ import {
     ChartTooltipContent,
     type ChartConfig,
 } from "@/components/ui/chart"
+import { TrafficBreakdown } from "@/lib/type"
 
-export const description = "A line chart with a label"
-
-
+export const description = "A line chart"
 
 const chartConfig = {
     desktop: {
         label: "Desktop",
         color: "var(--chart-1)",
     },
-    mobile: {
-        label: "Mobile",
-        color: "var(--chart-2)",
-    },
 } satisfies ChartConfig
 
-
-
-export function UsageTrendChart({ data }: { data: MonthlyUsage[] | null }) {
+export function TrafficBreakDownChart({ data }: { data: TrafficBreakdown[] | null }) {
     return (
-        <Card className="border-none shadow-none bg-transparent">
-    
+        <Card>
+          
             <CardContent>
-                <ChartContainer config={chartConfig} className="h-[300px] w-full  ">
+                <ChartContainer config={chartConfig} className="h-[300px] w-full">
                     <LineChart
                         accessibilityLayer
                         data={data || []}
                         margin={{
-                            top: 20,
                             left: 12,
                             right: 12,
                         }}
@@ -61,31 +52,20 @@ export function UsageTrendChart({ data }: { data: MonthlyUsage[] | null }) {
                         />
                         <ChartTooltip
                             cursor={false}
-                            content={<ChartTooltipContent indicator="line" />}
+                            content={<ChartTooltipContent hideLabel />}
+
                         />
                         <Line
-                            dataKey="totalCalls"
+                            dataKey="free"
                             type="natural"
-                            stroke="#68BAFF"
+                           stroke="#68BAFF"
                             strokeWidth={2}
-                            dot={{
-                                fill: "#68BAFF",
-                            }}
-                            activeDot={{
-                                r: 6,
-                            }}
-                        >
-                            <LabelList
-                                position="top"
-                                offset={12}
-                                className="fill-foreground"
-                                fontSize={12}
-                            />
-                        </Line>
+                            dot={false}
+                        />
                     </LineChart>
                 </ChartContainer>
             </CardContent>
-      
+           
         </Card>
     )
 }

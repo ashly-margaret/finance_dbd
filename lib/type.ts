@@ -14,3 +14,10 @@ export type MonthlyUsage = {
   totalCalls: number
   revenue?: number  // optional, if you want multi-line
 }
+
+export type TrafficBreakdown = {
+  month: string   // e.g., "Jan", "Feb", "Mar"
+  free: number
+  paid: number
+  premium: number
+}
