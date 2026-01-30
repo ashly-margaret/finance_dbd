@@ -40,7 +40,7 @@ const chartConfig = {
     },
 } satisfies ChartConfig
 
-export function UsageTrendChart() {
+export function UsageTrendChart({ data }: { data: any }) {
     return (
         <Card className="border-none shadow-none bg-transparent">
             {/* <CardHeader>
@@ -51,7 +51,7 @@ export function UsageTrendChart() {
                 <ChartContainer config={chartConfig} className="h-[300px] w-full  ">
                     <LineChart
                         accessibilityLayer
-                        data={chartData}
+                        data={data}
                         margin={{
                             top: 20,
                             left: 12,
@@ -71,7 +71,7 @@ export function UsageTrendChart() {
                             content={<ChartTooltipContent indicator="line" />}
                         />
                         <Line
-                            dataKey="desktop"
+                            dataKey="totalCalls"
                             type="natural"
                             stroke="#68BAFF"
                             strokeWidth={2}

@@ -8,3 +8,9 @@ export type OverviewData = {
         activeApis: number
     }
 }
+
+export type MonthlyUsage = {
+  month: string   // e.g., "Jan", "Feb", "Mar"
+  totalCalls: number
+  revenue?: number  // optional, if you want multi-line
+}

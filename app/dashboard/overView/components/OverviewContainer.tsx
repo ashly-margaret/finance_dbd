@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { UsageTrendChart } from "./UsageTrendChart";
 import { getOverviewData } from "@/lib/services/overview";
 import { OverviewData } from "@/lib/type";
+import { getMonthlyUsageData } from "@/lib/services/chart";
 
 /**
  * OverviewContainer
@@ -15,6 +16,7 @@ import { OverviewData } from "@/lib/type";
 export default function OverviewContainer() {
     const [isLoading, setIsLoading] = useState(true);
     const [overviewData, setOverviewData] = useState<OverviewData | null>(null);
+    const [monthlyUsageData, setMonthlyUsageData] = useState<any | null>(null);
 
     // useEffect(() => {
     //     // Simulate data fetching
@@ -36,8 +38,14 @@ const fetchOverviewData = async () => {
   setOverviewData(res)
 }
 
+const fetchMonthlyUsageData = async () => {
+  const res = await getMonthlyUsageData()
+  setMonthlyUsageData(res)
+}
+
     useEffect(() => {
         fetchOverviewData()
+        fetchMonthlyUsageData()
     }, []);
 
     return (
@@ -61,7 +69,7 @@ const fetchOverviewData = async () => {
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
                 <div className="col-span-4 p-6 rounded-xl  bg-card shadow-sm h-[400px]">
                     <h3 className="font-semibold leading-none tracking-tight text-foreground">Monthly Usage Trend</h3>
-                  <UsageTrendChart/>
+                  <UsageTrendChart data={monthlyUsageData}/>
                 </div>
                 <div className="col-span-3 p-6 rounded-xl  bg-card  shadow-sm h-[400px]">
                     <h3 className="font-semibold leading-none tracking-tight text-foreground">Paid Calls by Type</h3>
