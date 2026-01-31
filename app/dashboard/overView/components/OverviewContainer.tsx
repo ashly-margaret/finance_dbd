@@ -4,10 +4,11 @@ import PageHeader from "@/components/PageHeader";
 import React, { useState, useEffect } from "react";
 import { UsageTrendChart } from "./UsageTrendChart";
 import { getOverviewData } from "@/lib/services/overview";
-import { MonthlyUsage, OverviewData, TrafficBreakdown, UniqueVsNonUnique } from "@/lib/type";
-import { getMonthlyUsageData, getTrafficBreakdownData, getUniqueVsNonUniqueData } from "@/lib/services/chart";
+import { MonthlyUsage, OverviewData, RevenueBreakdown, TrafficBreakdown, UniqueVsNonUnique } from "@/lib/type";
+import { getMonthlyUsageData, getRevenueBreakDown, getTrafficBreakdownData, getUniqueVsNonUniqueData } from "@/lib/services/chart";
 import { TrafficBreakDownChart } from "./TrafficBreakDownChart";
 import { UniqueVsNonUniqueChart } from "./UniqueVsNonUniqueChart";
+import { RevenueBreakDownChart } from "./RevenueBreakDownChart";
 
 /**
  * OverviewContainer
@@ -21,22 +22,8 @@ export default function OverviewContainer() {
     const [monthlyUsageData, setMonthlyUsageData] = useState<MonthlyUsage[] | null>(null);
     const [trafficBreakdownData, setTrafficBreakdownData] = useState<TrafficBreakdown[] | null>(null);
     const [uniqueVsNonUniqueData, setUniqueVsNonUniqueData] = useState<UniqueVsNonUnique[] | null>(null);
-
-    // useEffect(() => {
-    //     // Simulate data fetching
-    //     const timer = setTimeout(() => {
-    //         setIsLoading(false);
-    //     }, 1000);
-    //     return () => clearTimeout(timer);
-    // }, []);
-
-    // if (isLoading) {
-    //     return (
-    //         <div className="flex items-center justify-center min-h-[400px] text-muted-foreground">
-    //             Loading dashboard data...
-    //         </div>
-    //     );
-    // }
+    const [revenueBreakDownData, setRevenueBreakDownData] = useState<RevenueBreakdown[] | null>(null);
+    
     const fetchOverviewData = async () => {
         const res = await getOverviewData()
         setOverviewData(res)
@@ -57,11 +44,17 @@ export default function OverviewContainer() {
         setUniqueVsNonUniqueData(res)
     }
 
+    const fetchRevenueBreakDown = async () => {
+        const res = await getRevenueBreakDown()
+        setRevenueBreakDownData(res)
+    }
+
     useEffect(() => {
         fetchOverviewData()
         fetchMonthlyUsageData()
         fetchTrafficBreakdownData()
         fetchUniqueVsNonUniqueData()
+        fetchRevenueBreakDown()
     }, []);
 
     return (
@@ -90,13 +83,13 @@ export default function OverviewContainer() {
                 <div className="col-span-3 p-6 rounded-xl  bg-card  shadow-sm h-[400px]">
                     <h3 className="font-semibold leading-none tracking-tight text-foreground">Paid Calls by Type</h3>
                     <UniqueVsNonUniqueChart data={uniqueVsNonUniqueData} />                </div>
-                <div className="col-span-3 p-6 rounded-xl  bg-card  shadow-sm h-[400px]">
+                <div className="col-span-4 p-6 rounded-xl  bg-card shadow-sm h-[400px]">
                     <h3 className="font-semibold leading-none tracking-tight text-foreground">Traffic Breakdown</h3>
                     <TrafficBreakDownChart data={trafficBreakdownData} />
                 </div>
                 <div className="col-span-3 p-6 rounded-xl  bg-card  shadow-sm h-[400px]">
-                    <h3 className="font-semibold leading-none tracking-tight text-foreground">Paid Calls by Type</h3>
-                    {/* Chart Placeholder */}
+                    <h3 className="font-semibold leading-none tracking-tight text-foreground">Revenue Breakdown</h3>
+                    <RevenueBreakDownChart data={revenueBreakDownData} />
                 </div>
             </div>
         </div>

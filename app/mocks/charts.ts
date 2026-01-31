@@ -32,3 +32,9 @@ export const uniqueVsNonUniqueMock = [
   { type: "Unique Calls", count: 180000 },
   { type: "Non-Unique Calls", count: 60000 },
 ]
+
+export const revenueBreakdownMock = [
+  { plan: "Free", revenue: 15000 },
+  { plan: "Pro", revenue: 20000 },
+  { plan: "Enterprise", revenue: 27070 },
+]

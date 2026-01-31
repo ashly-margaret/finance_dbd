@@ -19,7 +19,7 @@ import { UniqueVsNonUnique } from "@/lib/type"
 /* ----------------------------------------
    Pie Slice Colors (Theme-aware)
 ---------------------------------------- */
-const PIE_COLORS = {
+const PIE_COLORS :any = {
   "Unique Calls": "hsl(var(--chart-1))",
   "Non-Unique Calls": "hsl(var(--chart-2))",
 }
@@ -47,7 +47,7 @@ export function UniqueVsNonUniqueChart({
   }, [data])
 
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col border-none shadow-none bg-transparent">
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={{}}
@@ -108,6 +108,20 @@ export function UniqueVsNonUniqueChart({
           </PieChart>
         </ChartContainer>
       </CardContent>
+      <div className="flex justify-center gap-6 mt-4">
+  {processedData.map((item) => (
+    <div key={item.type} className="flex items-center gap-2">
+      <span
+        className="h-3 w-3 rounded-full"
+        style={{ backgroundColor: item.fill }}
+      />
+      <span className="text-sm text-muted-foreground">
+        {item.type}
+      </span>
+    </div>
+  ))}
+</div>
+
     </Card>
   )
 }

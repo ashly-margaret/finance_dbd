@@ -26,3 +26,8 @@ export type UniqueVsNonUnique = {
   type: string   // e.g., "Unique Calls", "Non-Unique Calls"
   count: number
 }
+export type RevenueBreakdown = {
+  plan: "Free" | "Pro" | "Enterprise"
+  revenue: number
+}
+

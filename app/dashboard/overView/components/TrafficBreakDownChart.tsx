@@ -16,18 +16,13 @@ import { TrafficBreakdown } from "@/lib/type"
 
 export const description = "A line chart"
 
-const chartConfig = {
-    desktop: {
-        label: "Desktop",
-        color: "var(--chart-1)",
-    },
-} satisfies ChartConfig
+
 
 export function TrafficBreakDownChart({ data }: { data: TrafficBreakdown[] | null }) {
     return (
         <Card className="border-none shadow-none bg-transparent">
             <CardContent>
-                <ChartContainer config={chartConfig} className="h-[300px] w-full">
+                <ChartContainer  className="h-[300px] w-full">
                     <LineChart
                         accessibilityLayer
                         data={data || []}

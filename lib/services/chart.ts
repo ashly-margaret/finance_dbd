@@ -23,3 +23,11 @@ export async function getUniqueVsNonUniqueData() {
     }
     return res.json()
 }
+
+export async function getRevenueBreakDown() {
+    const res = await fetch(ENDPOINTS.REVENUE_BREAKDOWN)
+    if (!res.ok) {
+        throw new Error("Failed to fetch revenue breakdown data")
+    }
+    return res.json()
+}
