@@ -1,131 +1,90 @@
-Finance Dashboard (Next.js + shadcn)
-
-A modern Finance & API Usage Dashboard built using Next.js (App Router) and shadcn UI, showcasing real-world enterprise dashboard features including charts, widgets, tables, filters, loaders, and mock API integrations.
-
-🚀 Tech Stack
-
-Next.js (App Router, TypeScript)
-
-shadcn UI
-
-Tailwind CSS
-
-Recharts (Charts)
-
-Mock APIs (Next.js Route Handlers)
-
-
-🎯 Key Features
-
-KPI widgets (cards)
-
-Trend charts (Line, Bar, Pie)
-
-Transaction summary tables
-
-Filters with loader states
-
-Tab-based navigation
-
-Unique vs Non-Unique views
-
-Mock API integration with artificial delays
-
-Skeleton & spinner loaders
-
-Light/Dark mode support
-
-
-📊 Dashboard Pages
-1. Overview
-
-KPI cards (Total Calls, Revenue, APIs)
-
-Monthly usage trend (Line chart)
-
-Paid Calls by Type (Bar chart)
-
-Unique vs Non-Unique (Pie chart)
-
-2. Transactions
-
-Filter bar (Client, Channel, Date)
-
-Tab-wise channel view
-
-Transaction summary table
-
-Unique transaction toggle
-
-Loader inside dropdowns
-
-3. APIs
-
-API usage cards
-
-Stacked bar (Paid vs Free)
-
-Error rate indicators
-
-4. Billing
-
-Invoice table
-
-Status badges (Paid / Pending / Rejected)
-
-Revenue trend chart
-
-Invoice preview modal
-
-5. Settings
-
-Theme toggle
-
-Notification toggle
-
-User profile section
-
-
-🧪 Mock APIs
-Endpoint	Description
-/api/overview	KPI metrics
-/api/charts	Chart data
-/api/transactions	Transaction table
-/api/apis	API usage
-/api/billing	Invoice data
-
-Each API simulates:
-
-Network delay
-
-Loading state
-
-Empty state
-
-Error handling
-
-
-🧠 Learning Goals
-
-Build production-style dashboards
-
-Practice state management
-
-Integrate charts with UI components
-
-Design scalable UI architecture
-
-Handle slow APIs gracefully
-
-
-🌱 Future Enhancements
-
-CSV export
-
-Saved filters
-
-Role-based access
-
-Real-time updates
-
-Drill-down charts
+# Finance Dashboard (FD)
+
+A modern, responsive finance dashboard application built with **Next.js 15**, **React**, and **TypeScript**. This project features a polished UI with dark mode support, data visualization, and interactive data tables.
+
+## 🎯 Purpose
+
+The primary goal of the **Finance Dashboard** is to provide a centralized, intuitive interface for:
+
+- **Monitoring Financial Health**: Real-time overview of revenue, expenses, and traffic.
+- **Data-Driven Decision Making**: Visualizing trends to actionable insights (Paid vs Free users, Monthly Usage).
+- **Billing Management**: Simplifying invoice tracking and subscription plan details.
+- **User Experience**: Delivering a premium, responsive experience across all devices.
+
+## 🚀 Features
+
+- **Responsive Design**: Fully responsive layout with a mobile-friendly drawer navigation (`Sheet`) and flexible desktop sidebar.
+- **Data Visualization**: Interactive charts (Line, Bar, Donut) using **Recharts** to display financial trends, traffic, and revenue breakdown.
+- **Dashboard Overview**: Metrics cards with skeleton loading states (`CustomChartSkeleton`) for a smooth user experience.
+- **Transactions Management**: Data table with sorting, filtering, and styled status badges using **TanStack Table**.
+- **Billing Section**: Manage invoices and billing details with automated downloads.
+- **Notifications**: Toast notifications for API errors and updates using **Sonner**.
+- **Aesthetic UI**: Custom "Deep Navy" dark theme (`#181D2B`), glassmorphism effects, and refined typography.
+
+## 🛠️ Technology Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **UI Components**: [Shadcn UI](https://ui.shadcn.com/) (Radix UI based)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Charts**: [Recharts](https://recharts.org/)
+- **Tables**: [TanStack Table v8](https://tanstack.com/table/v8)
+- **Theme**: `next-themes` for dark/light mode management.
+
+## 📂 Project Structure
+
+```
+├── app/
+│   ├── api/            # API Route handlers (Mocks)
+│   ├── dashboard/      # Dashboard pages (Overview, Transactions, Billing)
+│   ├── mocks/          # Mock data for charts and tables
+│   ├── layout.tsx      # Root layout
+│   └── globals.css     # Global styles and Tailwind configuration
+├── components/
+│   ├── ui/             # Reusable UI components (Button, Sheet, Skeleton, etc.)
+│   └── PageHeader.tsx  # Common page header component
+├── lib/
+│   ├── services/       # Data fetching services
+│   ├── type.ts         # TypeScript definitions
+│   └── utils.ts        # Utility functions (cn, etc.)
+└── public/             # Static assets
+```
+
+## ⚡ Getting Started
+
+1.  **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/your-username/finance-dashboard.git
+    cd finance-dashboard
+    ```
+
+2.  **Install dependencies:**
+
+    ```bash
+    npm install
+    # or
+    yarn install
+    # or
+    pnpm install
+    ```
+
+3.  **Run the development server:**
+
+    ```bash
+    npm run dev
+    ```
+
+4.  **Open your browser:**
+    Navigate to [http://localhost:3000/dashboard/overView](http://localhost:3000/dashboard/overView) to see the application in action.
+
+## 🎨 Design System
+
+- **Primary Background**: `#0F1117` (Main Content)
+- **Secondary Background**: `#181D2B` (Sidebar, Cards)
+- **Accent Color**: Purple `#6E44FF` (Active States, Highlights)
+- **Typography**: Inter (via `next/font`)
+
+## 📄 License
+
+This project is open-source and available under the MIT License.

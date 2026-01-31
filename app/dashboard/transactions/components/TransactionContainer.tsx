@@ -8,6 +8,8 @@ import { ColumnDef } from "@tanstack/react-table"
 import PageHeader from "@/components/PageHeader"
 import Loader from "@/components/ui/loader"
 import { toast } from "sonner"
+import { ArrowUpDown } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 
 const TransactionContainer = () => {
@@ -21,7 +23,17 @@ const TransactionContainer = () => {
         },
         {
             accessorKey: "client",
-            header: "Client",
+            header: ({ column }) => {
+                return (
+                    <Button
+                        variant="ghost"
+                        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                    >
+                        Client
+                        <ArrowUpDown className="ml-2 h-4 w-4" />
+                    </Button>
+                )
+            },
         },
         {
             accessorKey: "api",
@@ -57,7 +69,17 @@ const TransactionContainer = () => {
         },
         {
             accessorKey: "cost",
-            header: "Cost",
+            header: ({ column }) => {
+                return (
+                    <Button
+                        variant="ghost"
+                        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                    >
+                        Cost
+                        <ArrowUpDown className="ml-2 h-4 w-4" />
+                    </Button>
+                )
+            },
             cell: ({ row }) => {
                 const amount = parseFloat(row.getValue("cost"))
                 const formatted = new Intl.NumberFormat("en-US", {
@@ -69,7 +91,17 @@ const TransactionContainer = () => {
         },
         {
             accessorKey: "date",
-            header: "Date",
+            header: ({ column }) => {
+                return (
+                    <Button
+                        variant="ghost"
+                        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                    >
+                        Date
+                        <ArrowUpDown className="ml-2 h-4 w-4" />
+                    </Button>
+                )
+            },
         },
     ]
 
