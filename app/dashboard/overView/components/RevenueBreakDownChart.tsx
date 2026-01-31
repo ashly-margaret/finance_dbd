@@ -38,7 +38,7 @@ export function RevenueBreakDownChart({ data }: { data: RevenueBreakdown[] | nul
         ))}
       </div>
       <CardContent>
-        <ChartContainer config={{}} className="h-[300px] w-full">
+        <ChartContainer config={{}} className="h-[200px] w-full">
           <BarChart accessibilityLayer data={data || []}>
             <CartesianGrid vertical={false} />
             <XAxis

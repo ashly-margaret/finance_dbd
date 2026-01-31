@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Invoice INV-2024-001</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      padding: 40px;
+      color: #111827;
+    }
+    .invoice {
+      max-width: 800px;
+      margin: auto;
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 8px;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .muted {
+      color: #6b7280;
+      font-size: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+    }
+    th, td {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background: #f3f4f6;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: #6b7280;
+    }
+    .total {
+      text-align: right;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="invoice">
+    <h1>Invoice</h1>
+    <p class="muted">Invoice ID: INV-2024-001</p>
+    <p class="muted">Billing Period: Jan 2024</p>
+    <p class="muted">Issued: Jan 31, 2024</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Quantity</th>
+          <th>Rate</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>API Calls (Billable)</td>
+          <td>180,000</td>
+          <td>$0.024</td>
+          <td>$4,320.00</td>
+        </tr>
+        <tr>
+          <td>Overage Adjustment</td>
+          <td>-</td>
+          <td>-</td>
+          <td>$0.75</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="total">
+      Total Due: $4,320.75
+    </div>
+  </div>
+</body>
+</html>

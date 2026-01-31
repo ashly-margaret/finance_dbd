@@ -31,3 +31,27 @@ export type RevenueBreakdown = {
   revenue: number
 }
 
+export type Transaction = {
+  id: string
+  client: string
+  api: string
+  type: string
+  status: string
+  calls: number
+  cost: number
+  date: string
+}
+
+export type Billing = {
+    invoiceId: string
+    period: string
+    totalCalls: number
+    billableCalls: number
+    freeCalls: number
+    amount: number
+    status: string
+    issuedAt: string
+    dueDate: string
+    downloadUrl: string
+}
+

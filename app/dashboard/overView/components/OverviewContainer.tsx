@@ -9,6 +9,9 @@ import { getMonthlyUsageData, getRevenueBreakDown, getTrafficBreakdownData, getU
 import { TrafficBreakDownChart } from "./TrafficBreakDownChart";
 import { UniqueVsNonUniqueChart } from "./UniqueVsNonUniqueChart";
 import { RevenueBreakDownChart } from "./RevenueBreakDownChart";
+import { CustomChartSkeleton } from "./Skeletons";
+import { Skeleton } from "@/components/ui/skeleton";
+import { toast } from "sonner";
 
 /**
  * OverviewContainer
@@ -17,7 +20,6 @@ import { RevenueBreakDownChart } from "./RevenueBreakDownChart";
  * APIs should be called within useEffect or via libraries like TanStack Query.
  */
 export default function OverviewContainer() {
-    const [isLoading, setIsLoading] = useState(true);
     const [overviewData, setOverviewData] = useState<OverviewData | null>(null);
     const [monthlyUsageData, setMonthlyUsageData] = useState<MonthlyUsage[] | null>(null);
     const [trafficBreakdownData, setTrafficBreakdownData] = useState<TrafficBreakdown[] | null>(null);
@@ -50,11 +52,21 @@ export default function OverviewContainer() {
     }
 
     useEffect(() => {
-        fetchOverviewData()
-        fetchMonthlyUsageData()
-        fetchTrafficBreakdownData()
-        fetchUniqueVsNonUniqueData()
-        fetchRevenueBreakDown()
+        const loadAllData = async () => {
+            try {
+                await Promise.all([
+                    fetchOverviewData(),
+                    fetchMonthlyUsageData(),
+                    fetchTrafficBreakdownData(),
+                    fetchUniqueVsNonUniqueData(),
+                    fetchRevenueBreakDown()
+                ])
+            } catch (error) {
+                console.error("Failed to load overview data", error)
+                toast.error("Something went wrong")
+            }
+        }
+        loadAllData()
     }, []);
 
     return (
@@ -69,7 +81,16 @@ export default function OverviewContainer() {
                         <h3 className="text-sm font-medium tracking-tight text-foreground">
                             {item}
                         </h3>
-                        <div className="mt-2 text-2xl font-bold text-primary">{item === "Total Calls" ? overviewData?.totalCalls : item === "Revenue" ? overviewData?.revenue : item === "Active APIs" ? overviewData?.activeApis : overviewData?.delta.totalCalls}</div>
+                        <div className="mt-2 text-2xl font-bold text-primary">
+                            {overviewData ? (
+                                item === "Total Calls" ? overviewData.totalCalls : 
+                                item === "Revenue" ? overviewData.revenue : 
+                                item === "Active APIs" ? overviewData.activeApis : 
+                                overviewData.delta.totalCalls
+                            ) : (
+                                <Skeleton className="h-8 w-28" />
+                            )}
+                        </div>
                     </div>
                 ))}
             </div>
@@ -77,19 +98,20 @@ export default function OverviewContainer() {
             {/* Charts Section */}
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
                 <div className="col-span-4 p-6 rounded-xl  bg-card shadow-sm h-[400px]">
-                    <h3 className="font-semibold leading-none tracking-tight text-foreground">Monthly Usage Trend</h3>
-                    <UsageTrendChart data={monthlyUsageData} />
+                    <h3 className="font-semibold leading-none tracking-tight text-foreground mb-4">Monthly Usage Trend</h3>
+                    {monthlyUsageData ? <UsageTrendChart data={monthlyUsageData} /> : <CustomChartSkeleton />}
                 </div>
                 <div className="col-span-3 p-6 rounded-xl  bg-card  shadow-sm h-[400px]">
-                    <h3 className="font-semibold leading-none tracking-tight text-foreground">Paid Calls by Type</h3>
-                    <UniqueVsNonUniqueChart data={uniqueVsNonUniqueData} />                </div>
+                    <h3 className="font-semibold leading-none tracking-tight text-foreground mb-4">Paid Calls by Type</h3>
+                    {uniqueVsNonUniqueData ? <UniqueVsNonUniqueChart data={uniqueVsNonUniqueData} /> : <CustomChartSkeleton />}
+                </div>
                 <div className="col-span-4 p-6 rounded-xl  bg-card shadow-sm h-[400px]">
-                    <h3 className="font-semibold leading-none tracking-tight text-foreground">Traffic Breakdown</h3>
-                    <TrafficBreakDownChart data={trafficBreakdownData} />
+                    <h3 className="font-semibold leading-none tracking-tight text-foreground mb-4">Traffic Breakdown</h3>
+                    {trafficBreakdownData ? <TrafficBreakDownChart data={trafficBreakdownData} /> : <CustomChartSkeleton />}
                 </div>
                 <div className="col-span-3 p-6 rounded-xl  bg-card  shadow-sm h-[400px]">
-                    <h3 className="font-semibold leading-none tracking-tight text-foreground">Revenue Breakdown</h3>
-                    <RevenueBreakDownChart data={revenueBreakDownData} />
+                    <h3 className="font-semibold leading-none tracking-tight text-foreground mb-4">Revenue Breakdown</h3>
+                    {revenueBreakDownData ? <RevenueBreakDownChart data={revenueBreakDownData} /> : <CustomChartSkeleton />}
                 </div>
             </div>
         </div>
