@@ -85,6 +85,21 @@ The primary goal of the **Finance Dashboard** is to provide a centralized, intui
 - **Accent Color**: Purple `#6E44FF` (Active States, Highlights)
 - **Typography**: Inter (via `next/font`)
 
+## 🚀 Deployment
+
+The easiest way to deploy this Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+1.  **Push your code to GitHub/GitLab/Bitbucket**.
+2.  **Sign in to Vercel** and click **"Add New..."** -> **"Project"**.
+3.  **Import your Git repository**.
+4.  **Configure Project**:
+    - Framework Preset: `Next.js`
+    - Root Directory: `./` (default)
+    - Environment Variables: Add any secrets if needed (none required for mock data).
+5.  **Click Deploy**! 🚀
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
 ## 📄 License
 
 This project is open-source and available under the MIT License.
